@@ -2,6 +2,7 @@ package com.codingwithmitch.cleannotes.business.data.cache.implementation
 
 import com.codingwithmitch.cleannotes.business.data.cache.abstraction.NoteCacheDataSource
 import com.codingwithmitch.cleannotes.business.domain.model.Note
+import com.codingwithmitch.cleannotes.framework.datasource.cache.abstraction.NoteDaoService
 import javax.inject.Singleton
 
 @Singleton
@@ -19,8 +20,9 @@ constructor(
     override suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String) =
         noteDaoService.updateNote(primaryKey, newTitle, newBody)
 
-    override suspend fun searchNotes(query: String, filterAndOrder: String, page: Int) =
-        noteDaoService.searchNotes(query, filterAndOrder, page)
+    override suspend fun searchNotes(query: String, filterAndOrder: String, page: Int): List<Note> {
+        TODO("check filterAndOrder and make query")
+    }
 
     override suspend fun searchNoteById(primaryKey: String) =
         noteDaoService.searchNoteById(primaryKey)
